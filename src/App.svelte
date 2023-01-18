@@ -1,10 +1,14 @@
 <script>
 	export let name;
+	let beltColor = 'black';
+	const handleClick = () => {
+		beltColor = 'orange';
+	}
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Hello, Omar!</p>
+	<h1 class="{beltColor}">Hello {name}!</h1>
+	<button on:click={handleClick}>update belt color</button>
 </main>
 
 <style>
@@ -14,17 +18,18 @@
 		max-width: 240px;
 		margin: 0 auto;
 	}
-
 	h1 {
 		color: #ff3e00;
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
 	}
-
 	@media (min-width: 640px) {
 		main {
 			max-width: none;
 		}
+	}
+	.black {
+		color: black;
 	}
 </style>
