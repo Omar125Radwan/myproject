@@ -1,28 +1,21 @@
 <script>
-	let firstName = "Omar";
-	let lastName = "Radwan";
-	let beltColor = "black";
-
-
-	// Reactive Values
-	$: fullName = `${firstName} ${lastName}`;
-	$: {
-		console.log(beltColor);
-		console.log(fullName);
-	}
-
-	const handleClick = () => {
-		beltColor = "orange";
-	};
+	let pepole = [
+		{name: 'Omar', beltColor: 'black', age: 23, id: 1},
+		{name: 'Amr', beltColor: 'orange', age: 17, id: 2},
+		{name: 'Ali', beltColor: 'brown', age: 26, id: 3},
+	];
 </script>
 
 <main>
-	<h1 style="color: {beltColor}">{beltColor}</h1>
-	<p>{fullName}</p>
-	<input type="text" bind:value={firstName}>
-	<input type="text" bind:value={lastName}>
-	<input type="text" bind:value={beltColor}>
-	<button on:click={handleClick}>update belt color</button>
+	{#each pepole as person (person.id)}
+		<div>
+			<h2>{person.name}</h2>
+			<p>{person.beltColor}</p>
+			<p>{person.age} years old</p>
+		</div>
+	{:else}
+		<p>There is No pepoles</p>
+	{/each}
 </main>
 
 <style>
