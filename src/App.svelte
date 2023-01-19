@@ -1,23 +1,28 @@
 <script>
-	export let name;
-	let beltColor = 'black';
+	let firstName = "Omar";
+	let lastName = "Radwan";
+	let beltColor = "black";
+
+
+	// Reactive Values
+	$: fullName = `${firstName} ${lastName}`;
+	$: {
+		console.log(beltColor);
+		console.log(fullName);
+	}
+
 	const handleClick = () => {
-		beltColor = 'orange';
-	}
-	const handleInput = (e) => {
-		beltColor = e.target.value;
-	}
+		beltColor = "orange";
+	};
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<h2>{beltColor}</h2>
-	<button on:click={handleClick}>update belt color</button>
-	<!-- One Way Data Binding -->
-	<!-- <input type="text" on:input={handleInput}> -->
-	<!-- Two Way Data Binding -->
-	<!-- <input type="text" on:input={handleInput} value="{beltColor}"> -->
+	<h1 style="color: {beltColor}">{beltColor}</h1>
+	<p>{fullName}</p>
+	<input type="text" bind:value={firstName}>
+	<input type="text" bind:value={lastName}>
 	<input type="text" bind:value={beltColor}>
+	<button on:click={handleClick}>update belt color</button>
 </main>
 
 <style>
