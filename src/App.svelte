@@ -1,24 +1,35 @@
 <script>
 	let pepole = [
-		{name: 'Omar', beltColor: 'black', age: 23, id: 1},
-		{name: 'Amr', beltColor: 'orange', age: 17, id: 2},
+		{name: 'Amr', beltColor: 'orange', age: 17, id: 1},
+		{name: 'Omar', beltColor: 'black', age: 23, id: 2},
 		{name: 'Ali', beltColor: 'brown', age: 26, id: 3},
 	];
-	const handleClick = (e, id) => {
+	const handleClick = (id) => {
 		pepole = pepole.filter((person) => {
 			return person.id != id;
 		});
-		console.log(e);
-	}
+	};
+	let num = 4;
 </script>
+
+{#if num > 20}
+	<p>Greater than 20</p>
+{:else if num > 5}
+	<p>Greater than 5</p>
+{:else}
+	<p>less than 5</p>
+{/if}
 
 <main>
 	{#each pepole as person (person.id)}
 		<div>
+			{#if person.beltColor === 'black'}
+				<p><strong>MASTER NINJAS</strong></p>
+			{/if}
 			<h2>{person.name}</h2>
 			<p>{person.beltColor}</p>
 			<p>{person.age} years old</p>
-			<button on:click={(e) => handleClick(e,person.id)}>delete</button>
+			<button on:click={() => handleClick(person.id)}>delete</button>
 		</div>
 	{:else}
 		<p>There is No pepoles</p>
