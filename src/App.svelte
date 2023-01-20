@@ -4,6 +4,12 @@
 		{name: 'Amr', beltColor: 'orange', age: 17, id: 2},
 		{name: 'Ali', beltColor: 'brown', age: 26, id: 3},
 	];
+	const handleClick = (e, id) => {
+		pepole = pepole.filter((person) => {
+			return person.id != id;
+		});
+		console.log(e);
+	}
 </script>
 
 <main>
@@ -12,6 +18,7 @@
 			<h2>{person.name}</h2>
 			<p>{person.beltColor}</p>
 			<p>{person.age} years old</p>
+			<button on:click={(e) => handleClick(e,person.id)}>delete</button>
 		</div>
 	{:else}
 		<p>There is No pepoles</p>
