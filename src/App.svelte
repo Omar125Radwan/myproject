@@ -20,7 +20,7 @@
 			{#if person.beltColor === 'black'}
 				<p><strong>MASTER NINJAS</strong></p>
 			{/if}
-			<h2>{person.name}</h2>
+			<h4>{person.name}</h4>
 			<p>{person.beltColor}</p>
 			<p>{person.age} years old</p>
 			<button on:click={() => handleClick(person.id)}>delete</button>
