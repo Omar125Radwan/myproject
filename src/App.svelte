@@ -1,4 +1,5 @@
 <script>
+	import Modal from "./Modal.svelte";
 	let pepole = [
 		{name: 'Amr', beltColor: 'orange', age: 17, id: 1},
 		{name: 'Omar', beltColor: 'black', age: 23, id: 2},
@@ -12,14 +13,7 @@
 	let num = 4;
 </script>
 
-{#if num > 20}
-	<p>Greater than 20</p>
-{:else if num > 5}
-	<p>Greater than 5</p>
-{:else}
-	<p>less than 5</p>
-{/if}
-
+<Modal />
 <main>
 	{#each pepole as person (person.id)}
 		<div>
