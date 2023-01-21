@@ -1,23 +1,28 @@
 <script>
 	import Modal from "./Modal.svelte";
 	let pepole = [
-		{name: 'Amr', beltColor: 'orange', age: 17, id: 1},
-		{name: 'Omar', beltColor: 'black', age: 23, id: 2},
-		{name: 'Ali', beltColor: 'brown', age: 26, id: 3},
+		{ name: "Amr", beltColor: "orange", age: 17, id: 1 },
+		{ name: "Omar", beltColor: "black", age: 23, id: 2 },
+		{ name: "Ali", beltColor: "brown", age: 26, id: 3 },
 	];
 	const handleClick = (id) => {
 		pepole = pepole.filter((person) => {
 			return person.id != id;
 		});
 	};
+	let showModal = false;
+	const toggleModal = () => {
+		showModal = !showModal;
+	};
 </script>
 
 <!-- <Modal message="Hey, I am a prop value" isPromo="{true}"/> -->
-<Modal message="Hey, there again" />
+<Modal message="Hey, there again" {showModal} on:click={toggleModal} />
 <main>
+	<button on:click={toggleModal}>Open Modal</button>
 	{#each pepole as person (person.id)}
 		<div>
-			{#if person.beltColor === 'black'}
+			{#if person.beltColor === "black"}
 				<p><strong>MASTER NINJAS</strong></p>
 			{/if}
 			<h4>{person.name}</h4>
