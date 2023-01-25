@@ -15,11 +15,17 @@
 	const toggleModal = () => {
 		showModal = !showModal;
 	};
+	const addPerson = (e) => {
+		// console.log(e.detail);
+		const person = e.detail;
+		pepole = [person, ...pepole];
+		showModal = false;
+	};
 </script>
 
 <!-- <Modal message="Hey, I am a prop value" isPromo="{true}"/> -->
 <Modal {showModal} on:click={toggleModal}>
-	<AddPersonForm />
+	<AddPersonForm on:addPerson={addPerson} />
 </Modal>
 <main>
 	<button on:click={toggleModal}>Open Modal</button>
